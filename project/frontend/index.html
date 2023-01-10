@@ -6,14 +6,29 @@
     <meta name="viewport" content="width = device-width, initial-scale= 1.0" />
     <title>신년 메시지</title>
     <link rel="stylesheet" href="./static/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
   </head>
-  <body>
-    <nav>
-      <a href="/">home</a>
-      <a href="post">post</a>
-      <a href="setting">setting</a>
-    </nav>
+  <body class="project">
+    <div class="header">
+      <div onclick="location.href = '/'" class="header-text">WELCOME 2023</div>
+      <!-- <a href="post">post</a>
+      <a href="setting">setting</a> -->
+    </div>
+    <div class="waves-effect waves-light btn z-depth-3">글 작성하기</div>
     <div id="app"></div>
+
     <script type="module" src="./static/js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

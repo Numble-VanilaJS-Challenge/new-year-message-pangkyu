@@ -1,0 +1,17 @@
+.project {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+.header {
+  display: flex;
+  justify-content: right;
+  font-size: 24px;
+  width: 100%;
+}
+
+.header-text {
+  display: flex;
+  font-weight: 600;
+}
