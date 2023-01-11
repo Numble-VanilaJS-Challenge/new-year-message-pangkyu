@@ -10,41 +10,37 @@ export default class extends AbstractView {
     fetch("http://43.201.103.199/posts/")
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.data.posts[0]);
-        response.data.posts.map((item) => {
-          console.log(item);
+        console.log(response.data.posts);
+
+        for (let i = 0; i < response.data.posts.length; i++) {
           let area = document.createElement("div");
-          area.innerHTML = response.data.posts.length;
-          console.log(area.innerHTML);
-        });
-        const title = document.createElement("p");
-        const content = document.createElement("p");
-        const image = document.createElement("img");
+          let image = document.createElement("img");
+          let title = document.createElement("div");
+          let content = document.createElement("div");
 
-        title.innerHTML = response.data.posts[0].title;
-        content.innerHTML = response.data.posts[0].content;
-        image.innerHTML = response.data.posts[0].image;
-        image.src = `https://source.unsplash.com/random/360×360`;
-        image.className = `main__listArea--img`;
+          area.innerHTML = "";
+          area.className = `main__list-area` + i;
+          document.querySelector(".main__list").appendChild(area);
 
-        document.querySelector(".main__listArea--img").appendChild(image);
-        document.querySelector(".main__listArea-text-title").appendChild(title);
-        document
-          .querySelector(".main__listArea-text-content")
-          .appendChild(content);
+          image.innerHTML = response.data.posts[i].image;
+          image.src = `https://source.unsplash.com/random/360×360`;
+          image.className = `main__listArea--img`;
+          document.querySelector(`.main__list-area` + i).appendChild(image);
+
+          title.innerHTML = response.data.posts[i].title;
+          title.className = `main__listArea-text-title`;
+          document.querySelector(`.main__list-area` + i).appendChild(title);
+
+          content.innerHTML = response.data.posts[i].content;
+          content.className = `main__listArea-text-content`;
+          document.querySelector(`.main__list-area` + i).appendChild(content);
+        }
       })
       .catch((error) => console.log("error : ", error));
 
     return `
-    <div class = 'main__listArea'>
-      <div class = 'main__listArea--img'>
-      </div>
-      <div class = 'main__listArea-text'>
-        <div class = 'main__listArea-text-title'>
-        </div>
-        <div class = 'main__listArea-text-content'>
-        </div>
-      </div>
+    <div class = 'main__list'>
+     
     </div>
 
    
