@@ -1,0 +1,21 @@
+.main__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5rem;
+}
+.main__list-area {
+  display: flex;
+  width: 100%;
+}
+
+.main__list-img {
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+}
+
+.main__listArea--text {
+  display: flex;
+  flex-direction: column;
+}
