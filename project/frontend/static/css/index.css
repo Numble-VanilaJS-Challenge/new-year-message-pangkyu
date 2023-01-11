@@ -1,7 +1,13 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
 .project {
   display: flex;
   flex-direction: column;
   max-width: 720px;
+  width: 720px;
 }
 
 .header {
@@ -14,4 +20,30 @@
 .header-text {
   display: flex;
   font-weight: 600;
+}
+
+.write-btn {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__listArea {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.main__listArea--img {
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+}
+
+.main__listArea--text {
+  display: flex;
 }

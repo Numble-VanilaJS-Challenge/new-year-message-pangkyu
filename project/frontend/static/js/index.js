@@ -43,10 +43,10 @@ const router = async () => {
   }
 
   const view = new match.route.view();
-  document.querySelector("#app").innerHTML = await view.getHtml();
+  document.querySelector(".app").innerHTML = await view.getHtml();
 
-  console.log(match);
-  console.log(match.route.view());
+  //   console.log(match);
+  //   console.log(match.route.view());
 };
 
 window.addEventListener("popstate", router);
