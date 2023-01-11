@@ -14,17 +14,19 @@ export default class extends AbstractView {
 
         for (let i = 0; i < response.data.posts.length; i++) {
           let area = document.createElement("div");
+          let textArea = document.createElement("div");
           let image = document.createElement("img");
           let title = document.createElement("div");
           let content = document.createElement("div");
 
           area.innerHTML = "";
           area.className = `main__list-area` + i;
+          area.className += ` main__list-area`;
           document.querySelector(".main__list").appendChild(area);
 
           image.innerHTML = response.data.posts[i].image;
-          image.src = `https://source.unsplash.com/random/360×360`;
-          image.className = `main__listArea--img`;
+          image.src = response.data.posts[i].image;
+          image.className = `main__list-img`;
           document.querySelector(`.main__list-area` + i).appendChild(image);
 
           title.innerHTML = response.data.posts[i].title;
@@ -40,10 +42,7 @@ export default class extends AbstractView {
 
     return `
     <div class = 'main__list'>
-     
     </div>
-
-   
     `;
   }
 }
