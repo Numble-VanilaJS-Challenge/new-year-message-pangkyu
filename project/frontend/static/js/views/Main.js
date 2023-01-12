@@ -10,8 +10,6 @@ export default class extends AbstractView {
     fetch("http://43.201.103.199/posts/")
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.data.posts);
-
         for (let i = 0; i < response.data.posts.length; i++) {
           let area = document.createElement("div");
           let textArea = document.createElement("div");
@@ -21,7 +19,13 @@ export default class extends AbstractView {
 
           area.innerHTML = "";
           area.className = `main__list-area` + i;
-          area.className += ` main__list-area`;
+          area.className += ` collection`;
+          area.style = `border-radius : 1rem`;
+
+          area.setAttribute(
+            "onclick",
+            `location.href = '/post/' + ${response.data.posts[i].postId}`
+          );
           document.querySelector(".main__list").appendChild(area);
 
           image.innerHTML = response.data.posts[i].image;
@@ -29,13 +33,18 @@ export default class extends AbstractView {
           image.className = `main__list-img`;
           document.querySelector(`.main__list-area` + i).appendChild(image);
 
+          textArea.innerHTML = "";
+          textArea.className = `main__list--text`;
+          textArea.className += ` main__list--text` + i;
+          document.querySelector(`.main__list-area` + i).appendChild(textArea);
+
           title.innerHTML = response.data.posts[i].title;
-          title.className = `main__listArea-text-title`;
-          document.querySelector(`.main__list-area` + i).appendChild(title);
+          title.className = `main__list--text-title`;
+          document.querySelector(`.main__list--text` + i).appendChild(title);
 
           content.innerHTML = response.data.posts[i].content;
-          content.className = `main__listArea-text-content`;
-          document.querySelector(`.main__list-area` + i).appendChild(content);
+          content.className = `main__list--text-content`;
+          document.querySelector(`.main__list--text` + i).appendChild(content);
         }
       })
       .catch((error) => console.log("error : ", error));
@@ -43,6 +52,7 @@ export default class extends AbstractView {
     return `
     <div class = 'main__list'>
     </div>
+    
     `;
   }
 }
