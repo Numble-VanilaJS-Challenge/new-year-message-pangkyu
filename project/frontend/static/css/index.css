@@ -37,6 +37,7 @@ body {
 .header-text {
   display: flex;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .write-btn {

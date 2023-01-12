@@ -4,9 +4,11 @@
   width: 100%;
   padding: 0.5rem;
 }
-.main__list-area {
+
+.collection {
   display: flex;
   width: 100%;
+  cursor: pointer;
 }
 
 .main__list-img {
@@ -15,7 +17,19 @@
   height: 10rem;
 }
 
-.main__listArea--text {
+.main__list--text {
   display: flex;
   flex-direction: column;
+}
+
+.main__list--text-title {
+  display: flex;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.main__list--text-content {
+  display: flex;
+  padding: 1rem;
 }
