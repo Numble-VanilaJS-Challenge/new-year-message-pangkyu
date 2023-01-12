@@ -1,5 +1,7 @@
 import Main from "./views/Main.js";
 import NotFound from "./views/NotFound.js";
+import Post from "./views/Post.js";
+import Upload from "./views/Upload.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -13,8 +15,12 @@ const router = async () => {
       view: Main,
     },
     {
-      path: "/post",
-      view: () => console.log("post"),
+      path: "/upload",
+      view: Upload,
+    },
+    {
+      path: "/post/:postId",
+      view: Post,
     },
     {
       path: "/setting",
