@@ -26,6 +26,11 @@ export default class extends AbstractView {
             "onclick",
             `location.href = '/post/' + ${response.data.posts[i].postId}`
           );
+          // area.setAttribute(
+          //   "data-link",
+          //   `post`
+          //   // `post/${response.data.posts[i].postId}`
+          // );
           document.querySelector(".main__list").appendChild(area);
 
           image.innerHTML = response.data.posts[i].image;
@@ -50,6 +55,12 @@ export default class extends AbstractView {
       .catch((error) => console.log("error : ", error));
 
     return `
+    <div
+        class="waves-effect waves-light btn z-depth-3 write-btn"
+        data-link="upload"
+    >
+        글 작성하기
+    </div>
     <div class = 'main__list'>
     </div>
     
