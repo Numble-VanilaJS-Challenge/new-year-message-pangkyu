@@ -5,18 +5,32 @@ window.onload = async function upload() {
   // let uploadContent = document.forms["uploading"]["uploadContent"].value;
   // let uploadImage = document.forms["uploading"]["uploadImage"].value;
   const titleUpload = document.querySelector(".titleUpload");
+  const contentUpload = document.querySelector(".contentUpload");
+  let ImageUpload = "";
 
-  postUploadButton.addEventListener("click", postUploadBtnClick);
-  ImageUploadButton.addEventListener("click", ImageUploadBtnClick);
+  window.onload = postUploadButton.addEventListener(
+    "click",
+    postUploadBtnClick(e)
+  );
+  window.onload = ImageUploadButton.addEventListener(
+    "click",
+    ImageUploadBtnClick(e)
+  );
 
-  function ImageUploadBtnClick(e) {
-    window.alert("이미지");
-  }
+  window.onload = function ImageUploadBtnClick(e) {
+    e.preventDefault();
+    fetch(`https://source.unsplash.com/random`).then(
+      (response) => (ImageUpload = response.url)
+    );
+    console.log(ImageUpload);
+  };
 
-  function postUploadBtnClick(e) {
+  window.onload = function postUploadBtnClick(e) {
+    e.preventDefault();
     window.alert("글 등록");
+    console.log(ImageUpload);
     console.log(titleUpload.value);
-    // console.log(uploadContent);
+    console.log(typeof contentUpload.value);
 
     // if (postTitle === "" || postContent === "" || postImage === "") {
     //   alert("비어있는 항목이 있습니다. 입력후 다시 등록해주세요");
@@ -35,7 +49,7 @@ window.onload = async function upload() {
     //     // image: postImage,
     //   }),
     // }).then((response) => console.log(response));
-  }
+  };
 };
 
 // async function randomImage() {}
