@@ -13,8 +13,10 @@
 
 .main__list-img {
   display: flex;
-  width: 10rem;
-  height: 10rem;
+  min-width: 10rem;
+  max-width: 10rem;
+  min-height: 10rem;
+  max-height: 10rem;
 }
 
 .main__list--text {
@@ -30,6 +32,9 @@
 }
 
 .main__list--text-content {
-  display: flex;
+  display: -webkit-box;
+  height: 2.4em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   padding: 1rem;
 }
