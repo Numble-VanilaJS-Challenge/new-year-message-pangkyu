@@ -1,6 +1,6 @@
 import Main from "./views/Main.js";
 import NotFound from "./views/NotFound.js";
-import Post from "./views/Post.js";
+// import Post from "./views/Post.js";
 import Upload from "./views/Upload.js";
 
 const navigateTo = (url) => {
@@ -8,7 +8,8 @@ const navigateTo = (url) => {
   router();
 };
 
-const router = async () => {
+// export const router = async () => {
+export async function router() {
   const routes = [
     {
       path: "/",
@@ -18,10 +19,10 @@ const router = async () => {
       path: "/upload",
       view: Upload,
     },
-    {
-      path: "/post/:postId",
-      view: Post,
-    },
+    // {
+    //   path: "/post/:postId",
+    //   view: Post,
+    // },
     {
       path: "/setting",
       view: () => console.log("setting"),
@@ -50,10 +51,7 @@ const router = async () => {
 
   const view = new match.route.view();
   document.querySelector(".app").innerHTML = await view.getHtml();
-
-  //   console.log(match);
-  //   console.log(match.route.view());
-};
+}
 
 window.addEventListener("popstate", router);
 

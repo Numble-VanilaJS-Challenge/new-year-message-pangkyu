@@ -1,5 +1,4 @@
 import AbstractView from "./AbstractView.js";
-
 export default class extends AbstractView {
   constructor() {
     super();
@@ -16,7 +15,6 @@ export default class extends AbstractView {
           let image = document.createElement("img");
           let title = document.createElement("div");
           let content = document.createElement("div");
-
           area.innerHTML = "";
           area.className = `main__list-area` + i;
           area.className += ` collection`;
@@ -57,7 +55,7 @@ export default class extends AbstractView {
     return `
     <div
         class="waves-effect waves-light btn z-depth-3 write-btn"
-        data-link="upload"
+        onclick="location.href = '/upload'"
     >
         글 작성하기
     </div>
