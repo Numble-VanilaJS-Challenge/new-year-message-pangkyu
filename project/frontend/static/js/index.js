@@ -1,15 +1,24 @@
 import Main from "./views/Main.js";
 import NotFound from "./views/NotFound.js";
-// import Post from "./views/Post.js";
+import Post from "./views/Post.js";
 import Upload from "./views/Upload.js";
 
+let postId = 0;
 const navigateTo = (url) => {
   history.pushState(null, null, url);
-  router();
+  router(url);
 };
 
+// export async function router() {
 // export const router = async () => {
-export async function router() {
+const router = async (url) => {
+  if (typeof url === "string") {
+    if (url.includes("post")) {
+      let splitNumber = url.split("/");
+      postId = splitNumber[2];
+    }
+  }
+
   const routes = [
     {
       path: "/",
@@ -19,17 +28,13 @@ export async function router() {
       path: "/upload",
       view: Upload,
     },
-    // {
-    //   path: "/post/:postId",
-    //   view: Post,
-    // },
     {
-      path: "/setting",
-      view: () => console.log("setting"),
+      path: "/post/" + postId,
+      view: Post,
     },
     {
-      path: "/404",
-      view: NotFound,
+      path: "/edit",
+      view: () => console.log("edit"),
     },
   ];
 
@@ -41,17 +46,19 @@ export async function router() {
   });
 
   let match = potentialMatches.find((potentialMatch) => potentialMatch.isMatch);
-
   if (!match) {
     match = {
-      route: routes[routes.length - 1],
+      route: {
+        path: "/404",
+        view: NotFound,
+      },
       isMatch: true,
     };
   }
 
   const view = new match.route.view();
   document.querySelector(".app").innerHTML = await view.getHtml();
-}
+};
 
 window.addEventListener("popstate", router);
 
