@@ -1,8 +1,3 @@
-// window.onload = function upload() {
-
-// const ACCESS_KEY = require("../constants/constants");
-import { ACCESS_KEY } from "../constants/constants.js";
-
 window.onload = function upload() {
   const postUploadButton = document.querySelector(".postUpload-btn");
   const ImageUploadButton = document.querySelector(".imageUpload-btn");

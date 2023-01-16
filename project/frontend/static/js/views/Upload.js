@@ -16,7 +16,7 @@ export default class extends AbstractView {
     document.getElementById("root").appendChild(uploadScript);
 
     return /* html*/ `
-    <div class="waves-effect waves-light btn z-depth-3 imageUpload-btn" name = 'uploadImage' class = 'ImageUploadBtn'  >
+    <div class="waves-effect waves-light btn z-depth-3 imageUpload-btn" class = 'ImageUploadBtn'  >
         랜덤 이미지 추가하기 
     </div>
     <div>

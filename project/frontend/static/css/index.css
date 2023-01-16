@@ -29,7 +29,6 @@ body {
 
 .header {
   display: flex;
-  justify-content: right;
   font-size: 24px;
   width: 100%;
   padding: 1rem;
@@ -37,6 +36,7 @@ body {
 
 .header-text {
   display: flex;
+  margin-left: auto;
   font-weight: 600;
   cursor: pointer;
 }

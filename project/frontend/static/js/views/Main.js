@@ -1,12 +1,13 @@
 import AbstractView from "./AbstractView.js";
+
 export default class extends AbstractView {
-  constructor() {
-    super();
+  constructor(params) {
+    super(params);
     this.setTitle("Main");
   }
 
   async getHtml() {
-    fetch("http://43.201.103.199/posts/")
+    fetch(`http://43.201.103.199/posts/`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.data.posts.length; i++) {
@@ -21,14 +22,9 @@ export default class extends AbstractView {
           area.style = `border-radius : 1rem`;
 
           area.setAttribute(
-            "onclick",
-            `location.href = '/post/' + ${response.data.posts[i].postId}`
+            "data-link",
+            `/post/${Number(response.data.posts[i].postId)}`
           );
-          // area.setAttribute(
-          //   "data-link",
-          //   `post`
-          //   // `post/${response.data.posts[i].postId}`
-          // );
           document.querySelector(".main__list").appendChild(area);
 
           image.innerHTML = response.data.posts[i].image;
@@ -61,7 +57,7 @@ export default class extends AbstractView {
     </div>
     <div class = 'main__list'>
     </div>
-    
+
     `;
   }
 }

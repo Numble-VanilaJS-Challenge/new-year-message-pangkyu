@@ -9,8 +9,6 @@ const navigateTo = (url) => {
   router(url);
 };
 
-// export async function router() {
-// export const router = async () => {
 const router = async (url) => {
   if (typeof url === "string") {
     if (url.includes("post")) {

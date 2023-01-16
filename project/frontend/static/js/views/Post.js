@@ -5,9 +5,8 @@ export default class extends AbstractView {
     super(params);
     this.setTitle("post");
   }
-  async getHtml() {
-    console.log("hi");
 
+  async getHtml() {
     return `<p>post</p>`;
   }
 }
