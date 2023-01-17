@@ -30,19 +30,35 @@ export default class extends AbstractView {
           image.innerHTML = response.data.posts[i].image;
           image.src = response.data.posts[i].image;
           image.className = `main__list-img`;
+          image.setAttribute(
+            "data-link",
+            `/post/${Number(response.data.posts[i].postId)}`
+          );
           document.querySelector(`.main__list-area` + i).appendChild(image);
 
           textArea.innerHTML = "";
           textArea.className = `main__list--text`;
           textArea.className += ` main__list--text` + i;
+          textArea.setAttribute(
+            "data-link",
+            `/post/${Number(response.data.posts[i].postId)}`
+          );
           document.querySelector(`.main__list-area` + i).appendChild(textArea);
 
           title.innerHTML = response.data.posts[i].title;
           title.className = `main__list--text-title`;
+          title.setAttribute(
+            "data-link",
+            `/post/${Number(response.data.posts[i].postId)}`
+          );
           document.querySelector(`.main__list--text` + i).appendChild(title);
 
           content.innerHTML = response.data.posts[i].content;
           content.className = `main__list--text-content`;
+          content.setAttribute(
+            "data-link",
+            `/post/${Number(response.data.posts[i].postId)}`
+          );
           document.querySelector(`.main__list--text` + i).appendChild(content);
         }
       })
