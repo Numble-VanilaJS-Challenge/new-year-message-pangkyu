@@ -34,6 +34,7 @@ export default class extends AbstractView {
             "data-link",
             `/post/${Number(response.data.posts[i].postId)}`
           );
+
           document.querySelector(`.main__list-area` + i).appendChild(image);
 
           textArea.innerHTML = "";
@@ -59,6 +60,7 @@ export default class extends AbstractView {
             "data-link",
             `/post/${Number(response.data.posts[i].postId)}`
           );
+
           document.querySelector(`.main__list--text` + i).appendChild(content);
         }
       })

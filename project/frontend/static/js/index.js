@@ -10,11 +10,14 @@ const navigateTo = (url) => {
 };
 
 const router = async (url) => {
-  if (typeof url === "string") {
-    if (url.includes("post")) {
-      let splitNumber = url.split("/");
-      postId = splitNumber[2];
-    }
+  console.log(url);
+  console.log(location.pathname);
+  const pathname = location.pathname.split("/");
+  console.log(pathname);
+
+  if (pathname[1] === "post") {
+    console.log(pathname[2]);
+    postId = Number(pathname[2]);
   }
 
   const routes = [
