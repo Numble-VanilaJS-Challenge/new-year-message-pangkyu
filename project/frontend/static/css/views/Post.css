@@ -1,0 +1,56 @@
+.postSection {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ecf0f1;
+  margin-bottom: 1rem;
+}
+
+.post-image {
+  display: flex;
+  width: 100%;
+  height: 35rem;
+  margin: 0 auto;
+}
+
+.post__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.post__header-title {
+  display: flex;
+  font-weight: bold;
+  font-size: 24px;
+  margin: auto;
+}
+
+.post__header-day {
+  display: flex;
+  width: 98%;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 11px;
+  align-items: right;
+  justify-content: right;
+}
+
+.post__content {
+  display: flex;
+  padding: 1rem;
+}
+.post__button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post__comment {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.post__commentlist-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
