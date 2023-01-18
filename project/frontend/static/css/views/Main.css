@@ -5,10 +5,13 @@
   padding: 0.5rem;
 }
 
-.collection {
+.main__list-area {
   display: flex;
   width: 100%;
   cursor: pointer;
+  border-radius: 1rem;
+  border: 1px solid #bdc3c7;
+  margin-top: 1rem;
 }
 
 .main__list-img {
@@ -17,6 +20,7 @@
   max-width: 10rem;
   min-height: 10rem;
   max-height: 10rem;
+  border-radius: 1rem;
 }
 
 .main__list--text {

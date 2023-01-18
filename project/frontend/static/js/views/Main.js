@@ -6,76 +6,36 @@ export default class extends AbstractView {
     this.setTitle("Main");
   }
 
+  async getPosts() {
+    const response = await fetch(`http://43.201.103.199/posts/`);
+    const data = response.json();
+    return data;
+  }
+
   async getHtml() {
-    fetch(`http://43.201.103.199/posts/`)
-      .then((response) => response.json())
-      .then((response) => {
-        for (let i = 0; i < response.data.posts.length; i++) {
-          let area = document.createElement("div");
-          let textArea = document.createElement("div");
-          let image = document.createElement("img");
-          let title = document.createElement("div");
-          let content = document.createElement("div");
-          area.innerHTML = "";
-          area.className = `main__list-area` + i;
-          area.className += ` collection`;
-          area.style = `border-radius : 1rem`;
+    const postList = await this.getPosts();
+    console.log(postList.data);
 
-          area.setAttribute(
-            "data-link",
-            `/post/${Number(response.data.posts[i].postId)}`
-          );
-          document.querySelector(".main__list").appendChild(area);
-
-          image.innerHTML = response.data.posts[i].image;
-          image.src = response.data.posts[i].image;
-          image.className = `main__list-img`;
-          image.setAttribute(
-            "data-link",
-            `/post/${Number(response.data.posts[i].postId)}`
-          );
-
-          document.querySelector(`.main__list-area` + i).appendChild(image);
-
-          textArea.innerHTML = "";
-          textArea.className = `main__list--text`;
-          textArea.className += ` main__list--text` + i;
-          textArea.setAttribute(
-            "data-link",
-            `/post/${Number(response.data.posts[i].postId)}`
-          );
-          document.querySelector(`.main__list-area` + i).appendChild(textArea);
-
-          title.innerHTML = response.data.posts[i].title;
-          title.className = `main__list--text-title`;
-          title.setAttribute(
-            "data-link",
-            `/post/${Number(response.data.posts[i].postId)}`
-          );
-          document.querySelector(`.main__list--text` + i).appendChild(title);
-
-          content.innerHTML = response.data.posts[i].content;
-          content.className = `main__list--text-content`;
-          content.setAttribute(
-            "data-link",
-            `/post/${Number(response.data.posts[i].postId)}`
-          );
-
-          document.querySelector(`.main__list--text` + i).appendChild(content);
-        }
-      })
-      .catch((error) => console.log("error : ", error));
-
-    return `
-    <div
-        class="waves-effect waves-light btn z-depth-3 write-btn"
-        onclick="location.href = '/upload'"
-    >
+    return /*html*/ `
+    <div class="waves-effect waves-light btn z-depth-3 write-btn" onclick="location.href = '/upload'">
         글 작성하기
     </div>
     <div class = 'main__list'>
-    </div>
-
-    `;
+      ${postList.data.posts
+        .map(
+          (item) =>
+            `
+          
+          <div class = 'main__list-area' data-link = '/post/${item.postId}' >
+            <img src = ${item.image} class = 'main__list-img' data-link = '/post/${item.postId}' />
+            <div class = 'main__list--text' data-link = '/post/${item.postId}'>
+              <div class = 'main__list--text-title' data-link = '/post/${item.postId}'>${item.title}</div>
+              <div class = 'main__list--text-content' data-link = '/post/${item.postId}'>${item.content}</div>
+            </div>
+          </div>
+          `
+        )
+        .join("")}
+    </div>`;
   }
 }
