@@ -12,9 +12,17 @@ export default class extends AbstractView {
     return data;
   }
 
+  async sortList(posts) {
+    posts.sort((a, b) => {
+      if (a.postId > b.postId) return -1;
+      if (a.postId < b.postId) return 1;
+      return 0;
+    });
+    return posts;
+  }
   async getHtml() {
     const postList = await this.getPosts();
-    console.log(postList.data);
+    await this.sortList(postList.data.posts);
 
     return /*html*/ `
     <div class="waves-effect waves-light btn z-depth-3 write-btn" onclick="location.href = '/upload'">
@@ -25,7 +33,6 @@ export default class extends AbstractView {
         .map(
           (item) =>
             `
-          
           <div class = 'main__list-area' data-link = '/post/${item.postId}' >
             <img src = ${item.image} class = 'main__list-img' data-link = '/post/${item.postId}' />
             <div class = 'main__list--text' data-link = '/post/${item.postId}'>
