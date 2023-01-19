@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle("Main");
+    this.setTitle("HAPPY 2023 - 신년 인사를 건네봐요!");
   }
 
   async getPosts() {
@@ -25,7 +25,7 @@ export default class extends AbstractView {
     await this.sortList(postList.data.posts);
 
     return /*html*/ `
-    <div class="waves-effect waves-light btn z-depth-3 write-btn" onclick="location.href = '/upload'">
+    <div class="waves-effect waves-light btn z-depth-3 write-btn" data-link = '/upload' >
         글 작성하기
     </div>
     <div class = 'main__list'>
@@ -34,7 +34,7 @@ export default class extends AbstractView {
           (item) =>
             `
           <div class = 'main__list-area' data-link = '/post/${item.postId}' >
-            <img src = ${item.image} class = 'main__list-img' data-link = '/post/${item.postId}' />
+            <img src = ${item.image} class = 'main__list-img' onclick = 'location.href = '/post/${item.postId}'' />
             <div class = 'main__list--text' data-link = '/post/${item.postId}'>
               <div class = 'main__list--text-title' data-link = '/post/${item.postId}'>${item.title}</div>
               <div class = 'main__list--text-content' data-link = '/post/${item.postId}'>${item.content}</div>

@@ -10,13 +10,13 @@ const navigateTo = (url) => {
 };
 
 const router = async (url) => {
-  console.log(url);
-  console.log(location.pathname);
+  // console.log(url);
+  // console.log(location.pathname);
   const pathname = location.pathname.split("/");
-  console.log(pathname);
+  // console.log(pathname);
 
   if (pathname[1] === "post") {
-    console.log(pathname[2]);
+    // console.log(pathname[2]);
     postId = Number(pathname[2]);
   }
 
@@ -33,10 +33,10 @@ const router = async (url) => {
       path: "/post/" + postId,
       view: Post,
     },
-    {
-      path: "/edit",
-      view: () => console.log("edit"),
-    },
+    // {
+    //   path: "/edit",
+    //   view: () => console.log("edit"),
+    // },
   ];
 
   const potentialMatches = routes.map((route) => {

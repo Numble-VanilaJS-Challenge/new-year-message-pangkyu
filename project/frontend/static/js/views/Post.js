@@ -1,9 +1,9 @@
 import AbstractView from "./AbstractView.js";
 
-export default class extends AbstractView {
+export default class Post extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle("post");
+    this.setTitle("HAPPY 2023 - 신년 인사를 읽어봐요!");
   }
 
   async getPostId() {
@@ -15,23 +15,33 @@ export default class extends AbstractView {
     const postId = await this.getPostId();
     const response = await fetch(`http://43.201.103.199/post/${postId}`);
     const data = await response.json();
-    console.log(data);
     return data.data;
   }
-  async getPost() {
-    const response = getAPI();
-    const data = await response.json();
-    return data.data;
-  }
+
+  // async addComment() {
+  //   const postId = await this.getPostId();
+  //   const comment = document.querySelector(".post__comment-box");
+  //   const commentButton = document.querySelector(".post__comment-btn");
+
+  //   // function addCommentEvent(comment) {
+  //   //   console.log(comment);
+  //   //   alert("이벤트");
+  //   // }
+  //   return false;
+  // }
 
   async getHtml() {
     const getAPI = await this.getAPI();
     const postDay = getAPI.post.createdAt.substr(0, 10);
 
-    const postScript = document.createElement("script");
+    // const addComment = async () => {};
+    // this.addComment();
+
+    let postScript = document.createElement("script");
     postScript.setAttribute("type", "module");
-    postScript.setAttribute("src", "./static/js/func/Post.js");
+    // postScript.type = "text/html";
     postScript.setAttribute("crossorigin", "use-credentials");
+    postScript.src = "../func/Post.js";
     postScript.setAttribute("async", "");
 
     document.getElementById("root").appendChild(postScript);
@@ -42,7 +52,6 @@ export default class extends AbstractView {
                 <div class = 'post__header-title'><p>${
                   getAPI.post.title
                 }</p></div>
-       
                 <div class = 'post__header-day'><p>${postDay}</p></div>
             </div>
             <img src = ${getAPI.post.image} class = 'post-image' />
@@ -51,10 +60,8 @@ export default class extends AbstractView {
                 <div class="waves-effect waves-light btn post__button-edit">수정</div>
                 <div class="waves-effect waves-light btn post__button-delete" >삭제</div>
             </div>
-       
         </div>
         <p class = 'post__content-list'>댓글 리스트</p>
-   
         ${getAPI.comments
           .map(
             (item) =>

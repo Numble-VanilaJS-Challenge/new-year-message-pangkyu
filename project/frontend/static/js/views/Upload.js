@@ -3,7 +3,7 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle("신년 인사말을 등록해주세요");
+    this.setTitle("HAPPY 2023 - 신년 인사를 작성해봐요!");
   }
 
   async getHtml() {
